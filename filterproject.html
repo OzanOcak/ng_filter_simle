@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <link href="css/style.css" rel="Stylesheet">
+ </head>
+ <body ng-app="myApp3">
+   <div ng-controller="myFilterController">
+      Rows to display : <input type="number" step="1" min="0" max="5" ng-model="rowlimit">
+      <table>
+	    <thead>
+		  <tr>
+		    <th>name</th>
+			<th>date of birth</th>
+			<th>gender</th>
+			<th>salary(number)</th>
+			<th>salary(currency)</th>
+
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr ng-repeat="employee in employees | limitTo: rowlimit">
+		    <td>{{employee.name | uppercase}}</td>
+			<td>{{employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+			<td>{{employee.gender |lowercase}}</td>
+			<td>{{employee.salary | number:2}}</td>
+			<td>{{employee.salary | currency:"$":1}}</td>
+		  </tr>
+		</tbody>
+	  </table>
+
+   </div>
+  <script src="js/angular.js"></script>
+  <script src="js/script3.js"></script>
+ </body>
+</html>
